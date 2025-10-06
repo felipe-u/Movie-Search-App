@@ -6,7 +6,7 @@ import { useMovies } from './hooks/useMovies'
 
 function App() {
   const [query, setQuery] = useState('')
-  const { movies } = useMovies({ query })
+  const { movies, error, isLoading } = useMovies({ query })
 
   const handleSearch = (value) => {
     setQuery(value)
@@ -18,7 +18,11 @@ function App() {
         <h1>Movie Search App</h1>
         <SearchBar query={query} onSearch={handleSearch} />
       </header>
-      <main>{movies && <Movies movies={movies} />}</main>
+      <main>
+        {error && <p>{error}...</p>}
+        {isLoading && <div class='loader'></div>}
+        {movies && !isLoading && !error && <Movies movies={movies} />}
+      </main>
     </div>
   )
 }

@@ -8,6 +8,7 @@ export function useMovies({ query }) {
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
+    if (query === '') return
     const fetchMovies = async () => {
       try {
         setIsLoading(true)
