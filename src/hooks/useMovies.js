@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { ENPOINT_OMDB } from '../util/consts'
 import { getMovies } from '../services/movies'
 
 export function useMovies({ query }) {

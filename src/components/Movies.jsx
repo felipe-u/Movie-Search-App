@@ -1,11 +1,11 @@
-export function Movies({ movies }) {
+export function Movies({ movies, hasSearched = false }) {
   return (
     <>
       {movies.length > 0 ? (
         <ListOfMovies movies={movies} />
-      ) : (
+      ) : hasSearched ? (
         <p>No movies found...</p>
-      )}
+      ) : null}
     </>
   )
 }
