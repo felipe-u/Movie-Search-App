@@ -1,7 +1,12 @@
-export function SearchBar() {
+export function SearchBar({ query, onSearch }) {
   return (
     <form>
-      <input type='text' placeholder="The Matrix, Kil Bill, Avengers..." />
+      <input
+        value={query}
+        onChange={(e) => onSearch(e.target.value)}
+        type='text'
+        placeholder='The Matrix, Kil Bill, Avengers...'
+      />
     </form>
   )
 }
