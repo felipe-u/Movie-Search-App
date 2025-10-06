@@ -1,0 +1,76 @@
+:root {
+  --main-color: #2776f5;
+  --main-color-dark: #052e70;
+  --main-color-light: #bbd4fc;
+  --compl: #f5a627;
+  --compl-dark: #442b03;
+  --compl-light: #fce3bb;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+header {
+  width: 100%;
+  text-align: center;
+}
+
+header > h1 {
+  padding: 35px 0;
+  font-size: 2.5em;
+  color: var(--main-color);
+}
+
+form > input {
+  font-size: 1.3em;
+  padding: 5px 10px;
+  background-color: transparent;
+  color: whitesmoke;
+  border: 3px solid var(--main-color-dark);
+  border-radius: 15px;
+  margin-bottom: 50px;
+}
+
+form > input:focus {
+  border: 3px solid var(--main-color);
+  outline: none;
+}
+
+main {
+  border: 1px solid blue;
+  width: 100%;
+}
+
+.movies-container {
+  background-color: var(--main-color);
+  padding: 25px;
+  min-height: calc(100vh - 216px);
+}
+
+.movie-container {
+  text-align: center;
+  background-color: black;
+  width: 200px;
+  border-radius: 15px;
+  min-height: 326px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 0 10px 1px black;
+  cursor: pointer;
+}
+
+.movie-container > img {
+  width: 200px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 15px 15px 0 0;
+}
+
+.movie-container > p {
+  padding-bottom: 10px;
+}
