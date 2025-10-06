@@ -9,8 +9,7 @@ function App() {
   const { movies } = useMovies({ query })
 
   const handleSearch = (value) => {
-    const newValue = value;
-    setQuery(newValue)
+    setQuery(value)
   }
 
   return (
@@ -19,7 +18,7 @@ function App() {
         <h1>Movie Search App</h1>
         <SearchBar query={query} onSearch={handleSearch} />
       </header>
-      <main>{movies.length > 0 && <Movies movies={movies} />}</main>
+      <main>{movies && <Movies movies={movies} />}</main>
     </div>
   )
 }

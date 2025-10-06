@@ -1,8 +1,7 @@
 export function Movies({ movies }) {
-  const moviesToRender = movies?.length > 0 ? movies : []
   return (
     <>
-      {moviesToRender.length > 0 ? (
+      {movies.length > 0 ? (
         <ListOfMovies movies={movies} />
       ) : (
         <p>No movies found...</p>

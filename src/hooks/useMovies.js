@@ -1,22 +1,25 @@
 import { useEffect, useState } from 'react'
 import { ENPOINT_OMDB } from '../util/consts'
-
-const API_KEY = import.meta.env.VITE_OMDB_API_KEY
+import { getMovies } from '../services/movies'
 
 export function useMovies({ query }) {
   const [movies, setMovies] = useState([])
+  const [error, setError] = useState(null)
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
-    if (query === '') return
-    fetch(`${ENPOINT_OMDB}?apikey=${API_KEY}&s=${query}`)
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.Response === 'True') {
-          setMovies(data.Search)
-          return
-        }
-        setMovies([])
-      })
+    const fetchMovies = async () => {
+      try {
+        setIsLoading(true)
+        const movieData = await getMovies(query)
+        setMovies(movieData)
+      } catch (e) {
+        setError(e.message)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+    fetchMovies()
   }, [query])
-  return { movies }
+  return { movies, error, isLoading }
 }

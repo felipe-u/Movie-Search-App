@@ -42,16 +42,22 @@ form > input:focus {
 }
 
 main {
-  width: 100%;
+  width: 90%;
+  background-color: var(--main-color);
+  min-height: calc(100vh - 216px);
+  border-radius: 15px;
+  padding: 35px;
+}
+
+main > p {
+  text-align: center;
+  font-size: 2em;
+  padding-top: 35px;
+  color: black;
+  font-weight: 600;
 }
 
 .movies-container {
-  background-color: var(--main-color);
-  padding: 35px;
-  min-height: calc(100vh - 216px);
-  border-radius: 15px;
-  width: 90%;
-  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, auto));
   gap: 25px;
