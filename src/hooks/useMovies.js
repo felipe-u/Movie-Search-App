@@ -1,25 +1,27 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useRef, useState } from 'react'
 import { getMovies } from '../services/movies'
 
 export function useMovies({ query }) {
   const [movies, setMovies] = useState([])
   const [error, setError] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
+  const previousQuery = useRef(query)
 
-  useEffect(() => {
+  const fetchMovies = useCallback(async (query) => {
+    if (query === previousQuery.current) return
     if (query === '') return
-    const fetchMovies = async () => {
-      try {
-        setIsLoading(true)
-        const movieData = await getMovies(query)
-        setMovies(movieData)
-      } catch (e) {
-        setError(e.message)
-      } finally {
-        setIsLoading(false)
-      }
+    try {
+      setIsLoading(true)
+      setError(null)
+      previousQuery.current = query
+      const movieData = await getMovies(query)
+      setMovies(movieData)
+    } catch (e) {
+      setError(e.message)
+    } finally {
+      setIsLoading(false)
     }
-    fetchMovies()
-  }, [query])
-  return { movies, error, isLoading }
+  }, [])
+
+  return { movies, error, isLoading, fetchMovies }
 }

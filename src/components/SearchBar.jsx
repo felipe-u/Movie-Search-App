@@ -3,7 +3,7 @@ export function SearchBar({ query, onSearch }) {
     <form>
       <input
         value={query}
-        onChange={(e) => onSearch(e.target.value)}
+        onChange={onSearch}
         type='text'
         placeholder='The Matrix, Kil Bill, Avengers...'
       />
